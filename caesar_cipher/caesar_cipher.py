@@ -1,7 +1,9 @@
+# import nltk
+# nltk.download('words', quiet = True)
+# from nltk.corpus import words
 # Create an encrypt function that takes in a plain text phrase and a numeric shift.
     # the phrase will then be shifted that many letters.
     
-
 def encrypt(string, shift):
     # Assign empty string to capture post shift message
     message = "" 
@@ -62,7 +64,7 @@ def encrypt(string, shift):
 # print(encrypt('JeLlO', 27))
 # print(encrypt('ALL CAPITAL LETTERS ZZZ', 100))
 # print(encrypt('all lowercase letters zzz', -100))
-print(encrypt('It was the best of times, it was the worst of times.', 1))
+# print(encrypt('It was the best of times, it was the worst of times.', 1))
     
 # Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.
 
@@ -75,6 +77,42 @@ def decrypt(encrypted, key):
 
 # create a crack function that will decode the cipher so that an encrypted message can be transformed into its original state WITHOUT access to the key.
 
+def crack(encoded):
+    
+    crack_key = 1
+    # decoded = decrypt(encoded, crack_key)
+    # word_list = decoded.split()
+    # reference_words = words.words()
+    valid_words = []
+    
+
+    while crack_key <= 26:
+        decoded = decrypt(encoded, crack_key)
+        list_value = str(f'Key of {crack_key} = {decoded}')
+        valid_words.append(list_value)
+        crack_key = crack_key + 1
+
+    
+    # while crack_key < 26:
+    #     for word in word_list:
+    #         if word in reference_words:
+    #             valid_words.append(word)
+    # crack_key = crack_key + 1
+    return valid_words
+    
+    
+    
+    
+# print(crack(encrypt('Hello', 10)))
+# print(crack(encrypt('Hello', 5)))
+# print(crack(encrypt('Hello', 10)))
+# print(crack(encrypt('Hello', 25)))
+# print(crack(encrypt('Hello', 100)))
+print('Crack check -1', crack(encrypt('Hello', -1)))
+print('Crack check -5', crack(encrypt('Hello', -5)))
+print('Crack check -10', crack(encrypt('Hello', -10)))
+print('Crack check -25', crack(encrypt('Hello', -25)))
+print('Crack check -100', crack(encrypt('Hello', -100)))
 
 
 
