@@ -7,7 +7,8 @@ def encrypt(string, shift):
     message = "" 
 
     # Clean the shift number before running it through the code block
-    if shift == 0:
+    # Account for 0 shifts and negative shifts
+    if shift <= 0:
         return('Invalid shift key')
     if shift >= 26:
         key = shift % 26
@@ -29,11 +30,13 @@ def encrypt(string, shift):
 
         # Account for spaces
         if numeric == 32:
+            print('numeric before encrypted range statement', numeric)
             encrypted = numeric
+            print('encrypted range statement', encrypted)
         else:    
             # Add the input shift amount to the ASCII value
             encrypted = numeric + key
-            print('encrypted', encrypted)
+            print('encrypted + key', encrypted)
 #    Check values to ensure that they are within the range that we would like (65-90:Uppercase and 97-122:Lowercase)
       
         if encrypted < 65:
@@ -56,9 +59,9 @@ def encrypt(string, shift):
 
 # print(encrypt('hello', 1))
 # print(encrypt('JeLlO', 27))
-# print(encrypt('ALL CAPITAL LETTERS', 596))
-print(encrypt('all lowercase letters', -1))
-# print(encrypt('JeLlO', 596))
+# print(encrypt('ALL CAPITAL LETTERS', 1))
+# print(encrypt('all lowercase letters', 1))
+print(encrypt('It was the best of times, it was the worst of times.', 1))
     
 # Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.
 
