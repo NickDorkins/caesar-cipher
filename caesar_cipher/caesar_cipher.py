@@ -17,7 +17,7 @@ def encrypt(string, shift):
         key = key + 26
         if key == 0:
             return('Invalid shift key')
-    print('key:', key)
+    # print('key:', key)
 
     # Establish length of input string
     mes_len = len(string)
@@ -29,9 +29,15 @@ def encrypt(string, shift):
         numeric = ord(string[letter])
         # print('numeric', numeric)
 
-        # Account for spaces
-        if numeric == 32:
+        if numeric <= 64 or numeric >= 123:
             encrypted = numeric
+
+        elif numeric >= 91 and numeric <= 96:
+            encrypted = numeric
+
+        # Account for spaces
+        # if numeric == 32:
+        #     encrypted = numeric
             # print('encrypted == 32 statement', encrypted)
         else:    
             # Add the input shift amount to the ASCII value
@@ -88,8 +94,9 @@ def crack(encoded):
 
     while crack_key <= 26:
         decoded = decrypt(encoded, crack_key)
-        list_value = str(f'Key of {crack_key} = {decoded}')
-        valid_words.append(list_value)
+        # list_value = str(f'Key of {crack_key} = {decoded}')
+        valid_words.append(decoded)
+
         crack_key = crack_key + 1
 
     
@@ -103,17 +110,76 @@ def crack(encoded):
     
     
     
-# print(crack(encrypt('Hello', 10)))
+# print(crack(encrypt('Hello', 1)))
 # print(crack(encrypt('Hello', 5)))
 # print(crack(encrypt('Hello', 10)))
 # print(crack(encrypt('Hello', 25)))
 # print(crack(encrypt('Hello', 100)))
-print('Crack check -1', crack(encrypt('Hello', -1)))
-print('Crack check -5', crack(encrypt('Hello', -5)))
-print('Crack check -10', crack(encrypt('Hello', -10)))
-print('Crack check -25', crack(encrypt('Hello', -25)))
-print('Crack check -100', crack(encrypt('Hello', -100)))
+# print('Crack check -1', crack(encrypt('Hello', -1)))
+# print('Crack check -5', crack(encrypt('Hello', -5)))
+# print('Crack check -10', crack(encrypt('Hello', -10)))
+# print('Crack check -25', crack(encrypt('Hello', -25)))
+# print('Crack check -100', crack(encrypt('Hello', -100)))
 
+# print('Crack check 1',crack(encrypt('ALL CAPITAL LETTERS', 1)))
+# print('*' *45)
+# print('Crack check 5',crack(encrypt('ALL CAPITAL LETTERS', 5)))
+# print('*' *45)
+# print('Crack check 10',crack(encrypt('ALL CAPITAL LETTERS', 10)))
+# print('*' *45)
+# print('Crack check 25',crack(encrypt('ALL CAPITAL LETTERS', 25)))
+# print('*' *45)
+# print('Crack check 100',crack(encrypt('ALL CAPITAL LETTERS', 100)))
+# print('*' *45)
+# print('Crack check -1', crack(encrypt('ALL CAPITAL LETTERS', -1)))
+# print('*' *45)
+# print('Crack check -5', crack(encrypt('ALL CAPITAL LETTERS', -5)))
+# print('*' *45)
+# print('Crack check -10', crack(encrypt('ALL CAPITAL LETTERS', -10)))
+# print('*' *45)
+# print('Crack check -25', crack(encrypt('ALL CAPITAL LETTERS', -25)))
+# print('*' *45)
+# print('Crack check -100', crack(encrypt('ALL CAPITAL LETTERS', -100)))
+
+# print('Crack check 1',crack(encrypt('all lowercase letters', 1)))
+# print('*' *45)
+# print('Crack check 5',crack(encrypt('all lowercase letters', 5)))
+# print('*' *45)
+# print('Crack check 10',crack(encrypt('all lowercase letters', 10)))
+# print('*' *45)
+# print('Crack check 25',crack(encrypt('all lowercase letters', 25)))
+# print('*' *45)
+# print('Crack check 100',crack(encrypt('all lowercase letters', 100)))
+# print('*' *45)
+# print('Crack check -1', crack(encrypt('all lowercase letters', -1)))
+# print('*' *45)
+# print('Crack check -5', crack(encrypt('all lowercase letters', -5)))
+# print('*' *45)
+# print('Crack check -10', crack(encrypt('all lowercase letters', -10)))
+# print('*' *45)
+# print('Crack check -25', crack(encrypt('all lowercase letters', -25)))
+# print('*' *45)
+# print('Crack check -100', crack(encrypt('all lowercase letters', -100)))
+
+# print('Crack check 1',crack(encrypt('mIxEd LeTtEr SeTs', 1)))
+# print('*' *45)
+# print('Crack check 5',crack(encrypt('mIxEd LeTtEr SeTs', 5)))
+# print('*' *45)
+# print('Crack check 10',crack(encrypt('mIxEd LeTtEr SeTs', 10)))
+# print('*' *45)
+# print('Crack check 25',crack(encrypt('mIxEd LeTtEr SeTs', 25)))
+# print('*' *45)
+# print('Crack check 100',crack(encrypt('mIxEd LeTtEr SeTs', 100)))
+# print('*' *45)
+# print('Crack check -1', crack(encrypt('mIxEd LeTtEr SeTs', -1)))
+# print('*' *45)
+# print('Crack check -5', crack(encrypt('mIxEd LeTtEr SeTs', -5)))
+# print('*' *45)
+# print('Crack check -10', crack(encrypt('mIxEd LeTtEr SeTs', -10)))
+# print('*' *45)
+# print('Crack check -25', crack(encrypt('mIxEd LeTtEr SeTs', -25)))
+# print('*' *45)
+# print('Crack check -100', crack(encrypt('mIxEd LeTtEr SeTs', -100)))
 
 
 

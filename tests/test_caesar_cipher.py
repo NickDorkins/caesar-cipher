@@ -1,4 +1,4 @@
-from caesar_cipher.caesar_cipher import encrypt, decrypt
+from caesar_cipher.caesar_cipher import encrypt, decrypt, crack
 
 # ------------------------------------------------------------
 
@@ -38,7 +38,7 @@ def test_decrypt_a_previously_encrypted_string_with_known_shift():
 def test_encrypt_handle_upper_and_lower_case_letters():
     encrypted = encrypt('It was the best of times, it was the worst of times.', 1)
     actual = encrypted
-    expected = 'Ju xbt uif cftu pg ujnft- ju xbt uif xpstu pg ujnft/'
+    expected = 'Ju xbt uif cftu pg ujnft, ju xbt uif xpstu pg ujnft.'
     assert actual == expected
 
 # ------------------------------------------------------------
@@ -52,16 +52,11 @@ def test_encrypt_handle_upper_and_lower_case_letters():
 
 
 # decrypt encrypted version of It was the best of times, it was the worst of times. WITHOUT knowing the shift used.
+def test_without_knowing_the_shift_used():
+    input_string = 'It was the best of times, it was the worst of times.'
+    encrypted = encrypt(input_string, 1)
+    cracker = crack(encrypted)
+    actual = cracker[0]
+    expected = input_string
+    assert actual == expected
 
-
-
-
-
-
-
-
-# print(encrypt('hello', 1))
-# print(encrypt('JeLlO', 27))
-# print(encrypt('ALL CAPITAL LETTERS ZZZ', -100))
-# print(encrypt('all lowercase letters zzz', -100))
-# print(encrypt('It was the best of times, it was the worst of times.', 1))
